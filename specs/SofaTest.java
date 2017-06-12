@@ -11,10 +11,12 @@ import models.*;
 public class SofaTest {
 
   Sofa sofa;
+  Discount discount;
 
   @Before 
   public void before() {
     sofa = new Sofa("Furniture","Sofa", 200.00, "IKEA", "XYZ", 3, "fabric");
+    discount = new Discount("£30 off the advertised price", "amount", 30);
   }
 
   @Test
@@ -30,5 +32,23 @@ public class SofaTest {
   @Test
   public void canGetMaterial() {
     assertEquals("fabric", sofa.getMaterial());
+  }
+
+  @Test
+  public void canGetDiscountLabel() {
+    sofa.setDiscount(discount);
+    assertEquals("£30 off the advertised price", sofa.getDiscountLabel());
+  }
+
+  @Test
+  public void canGetDiscountType() {
+    sofa.setDiscount(discount);
+    assertEquals("amount", sofa.getDiscountType());
+  }
+
+  @Test
+  public void canGetDiscountValue() {
+    sofa.setDiscount(discount);
+    assertEquals(30, sofa.getDiscountValue());
   }
 }
