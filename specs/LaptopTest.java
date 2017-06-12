@@ -10,10 +10,12 @@ import models.*;
   
 public class LaptopTest {
   Laptop laptop;
+  Discount discount;
 
   @Before
   public void before(){
     laptop = new Laptop("Technology","Laptop", 800.00, "Macbook", "Pro", 17);
+    discount = new Discount("20% better value", "percentage", 20);
   }
 
   @Test
@@ -50,4 +52,23 @@ public class LaptopTest {
   public void canGetScreenSize() {
     assertEquals(17, laptop.getScreenSize());
   }
+
+  @Test
+  public void canGetDiscountLabel() {
+    laptop.setDiscount(discount);
+    assertEquals("20% better value", laptop.getDiscountLabel());
+  }
+
+  @Test
+  public void canGetDiscountType() {
+    laptop.setDiscount(discount);
+    assertEquals("percentage", laptop.getDiscountType());
+  }
+
+  @Test
+  public void canGetDiscountValue() {
+    laptop.setDiscount(discount);
+    assertEquals(20, laptop.getDiscountValue());
+  }
+
 }

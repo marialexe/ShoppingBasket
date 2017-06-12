@@ -16,7 +16,11 @@ public class Jewellery extends Item implements Discountable {
     return this.metal;
   }
 
-  public String getLabel() {
+  public Discount setDiscount(Discount newDiscount) {
+    return this.discount = newDiscount;
+  }
+
+  public String getDiscountLabel() {
     return discount.getLabel();
   }
 
